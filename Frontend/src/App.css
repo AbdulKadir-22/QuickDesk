@@ -1,0 +1,14 @@
+/* In Login.css */
+.urbanist-regular {
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+.urbanist-bold {
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600; /* Bold weight */
+  font-style: normal;
+}
