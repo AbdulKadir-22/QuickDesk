@@ -7,12 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const authRoutes = require('./routes/auth.routes')
 const userRoutes = require('./routes/user.routes');
 const ticketRoutes = require('./routes/ticket.routes');
 const messageRoutes = require('./routes/message.routes');
 const categoryRoutes = require('./routes/category.routes');
 
-app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/tickets', ticketRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/categories', categoryRoutes);

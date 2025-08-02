@@ -1,9 +1,12 @@
-const User = require("../models/user.model");
 
+const User = require("../models/user.model");
+const jwt = require("../helper/JwtToken");
+const bcrypt = require('../helper/bcrypt');
 //POST /api/users
 exports.createUser = async (req, res) => {
   try {
-    const { name, email, role, categories, profileImage } = req.body;
+    const { name, email, role, categories, profileImage, password } = req.body;
+    const encryptedPassword = await bcrypt.encryptPassword(password)
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -15,14 +18,21 @@ exports.createUser = async (req, res) => {
     const user = new User({
       name,
       email,
+      password:encryptedPassword,
       role,
       categories,
       profileImage,
     });
 
-    await user.save();
+  
+      const authtoken = jwt.tokengenerator(
+        user.id,
+        user.email
+      );
+ 
+      await user.save();
 
-    return res.status(201).json(user);
+    return res.status(201).json({user:user,token:authtoken});
   } catch (err) {
     return res
       .status(500)
@@ -30,6 +40,31 @@ exports.createUser = async (req, res) => {
   }
 };
 
+exports.loginUser = async(req,res) =>{
+  try {
+    const {email, password} = req.body
+     const user = await User.findOne({ email: email })
+      .populate("tickets")
+      .populate("assigned_tickets");
+
+      if(!user){
+        return {success:false,error:"Email not found"}
+      }
+      const isPasswordValid = await bcrypt.comparePassword(password,user.password);
+      if(!isPasswordValid){
+        return {success:false,error:"Incorrect password"}
+      }
+      const authtoken = jwt.tokengenerator(user.id,user.email);
+
+  
+
+    return res.status(200).json({user:user,token:authtoken});
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Server error", error: err.message });
+  }
+}
 //GET /api/users
 exports.getAllUsers = async (req, res) => {
   try {
