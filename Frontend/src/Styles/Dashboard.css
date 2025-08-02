@@ -3,24 +3,39 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* NAVIGATION BAR */
 .vertical-navbar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
-  gap: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .center-logo {
-  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 10px;
 }
 
+.center-logo img {
+  height: 36px;
+}
+
+.center-logo span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* NAV LINKS */
 .horizontal-links {
   list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
   padding: 0;
@@ -29,18 +44,26 @@ body {
 
 .horizontal-links li {
   background: #f2f2f2;
-  padding: 8px 16px;
+  padding: 6px 16px;
   border-radius: 20px;
   font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
+  color: #000;
+  transition: background-color 0.2s ease;
+}
+
+.horizontal-links li:hover {
+  background: #e0e0e0;
 }
 
 .horizontal-links .active {
   background-color: #e5e5ff;
   color: #5272f2;
+  font-weight: 600;
 }
 
-
+/* STATS SECTION */
 .stats-section {
   display: flex;
   justify-content: flex-start;
@@ -56,7 +79,7 @@ body {
   border-radius: 10px;
   padding: 30px 20px;
   width: 180px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card h2 {
@@ -76,6 +99,7 @@ body {
   margin-bottom: 30px;
 }
 
+/* TICKETS */
 .tickets-list {
   padding: 0 40px 40px;
 }
@@ -87,7 +111,9 @@ body {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .ticket-content h3 {
@@ -100,6 +126,7 @@ body {
   align-items: center;
   gap: 10px;
   margin: 10px 0;
+  flex-wrap: wrap;
 }
 
 .category {
@@ -137,4 +164,71 @@ body {
   font-size: 18px;
   color: #5272f2;
   font-weight: bold;
+}
+
+/* LOGOUT BUTTON */
+.logout-top-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+  font-weight: 500;
+}
+
+.logout-top-btn:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+/* MEDIA QUERY: Mobile & Tablets */
+@media (max-width: 768px) {
+  .stats-section {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .stat-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .tickets-list {
+    padding: 0 20px 30px;
+  }
+
+  .ticket-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .ticket-status {
+    align-self: flex-end;
+    text-align: right;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .logout-top-btn {
+    top: 10px;
+    right: 15px;
+    font-size: 12px;
+  }
+
+  .horizontal-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .horizontal-links li {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
 }
