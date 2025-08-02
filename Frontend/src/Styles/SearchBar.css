@@ -1,52 +1,45 @@
-.searchbar {
+/* src/Styles/SearchBar.css */
+.search-bar {
   display: flex;
+  align-items: center;
   width: 100%;
-  margin-bottom: 24px;
-  gap: 0;
+  gap: 0.5rem;
+  padding: 1rem;
 }
 
-.searchbar input {
+.search-bar input {
   flex: 1;
-  padding: 14px 16px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 12px 0 0 12px;
-  outline: none;
-  background-color: white;
-}
-
-.searchbar button {
-  padding: 14px 24px;
-  font-size: 16px;
-  background-color: #4b67ff;
-  color: white;
+  padding: 0.75rem 1rem;
   border: none;
-  border-radius: 0 12px 12px 0;
+  border-radius: 9999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+.search-bar .ask-button {
+  background-color: #4f46e5;
+  width: 100px;
+  color: white;
+  padding: 0.75rem 1.2rem;
+  border: none;
+  border-radius: 9999px;
+  font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
 }
 
-.searchbar button:hover {
-  background-color: #3f57d5;
+.search-bar .ask-button:hover {
+  background-color: #4338ca;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .searchbar {
+@media (max-width: 600px) {
+  .search-bar {
     flex-direction: column;
-    gap: 12px;
+    align-items: stretch;
   }
 
-  .searchbar input {
+  .search-bar .ask-button {
     width: 100%;
-    border-radius: 12px;
-    border-right: 1px solid #ccc;
-  }
-
-  .searchbar button {
-    width: 100%;
-    border-radius: 12px;
   }
 }

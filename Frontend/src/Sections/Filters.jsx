@@ -6,20 +6,24 @@ const Filters = () => {
   return (
     <div className="filters">
       <h2>Filters</h2>
-      <div className="filter-options">
-        <label className="toggle">
-          Show Open Only
-          <input type="checkbox" defaultChecked />
-        </label>
-        <select>
+      <div className="filter-row">
+        <div className="toggle">
+          <span>Show Open Only</span>
+          <label className="switch">
+            <input type="checkbox" defaultChecked />
+            <span className="slider round"></span>
+          </label>
+        </div>
+        <select className="dropdown">
           <option>Categories</option>
         </select>
-        <select>
+        <select className="dropdown">
           <option>Status</option>
         </select>
         <div className="sort-by">
-          <label><input type="radio" name="sort" defaultChecked /> most upvoted</label>
-          <label><input type="radio" name="sort" /> most commented</label>
+          <span>Sort By</span>
+          <label><input type="radio" name="sort" /> most upvoted</label>
+          <label><input type="radio" name="sort" defaultChecked /> most commented</label>
         </div>
       </div>
     </div>
