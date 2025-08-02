@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+require('./ticket.model');
 
 const roles = ["end_user", "support_agent", "admin"];
 
