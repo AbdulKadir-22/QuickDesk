@@ -7,6 +7,7 @@ import Dashboard from './Pages/Dashboard';
 import TicketsPage from './Pages/TicketsPage';
 import RaiseTicket from './Pages/RaiseTicket';
 import AllTickets from './Pages/AllTickets';
+import ProfilePage from './Pages/ProfilePage';
 
 const AppRoutes = () => {
   const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
@@ -23,6 +24,7 @@ const AppRoutes = () => {
       />
       <Route path="/ticketsPage" element={<TicketsPage/>}/>
       <Route path="/allTickets" element={<AllTickets/>}/>
+      <Route path="/profilePage" element={<ProfilePage/>}/>
     </Routes>
   );
 };
