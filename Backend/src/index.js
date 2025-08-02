@@ -9,9 +9,11 @@ app.use(express.json());
 
 const userRoutes = require('./routes/user.routes');
 const ticketRoutes = require('./routes/ticket.routes');
+const messageRoutes = require('./routes/message.routes');
 
 app.use('/api/users', userRoutes);
 app.use('/api/tickets', ticketRoutes);
+app.use('/api/messages', messageRoutes);
 
 
 app.use(errorHandler);
