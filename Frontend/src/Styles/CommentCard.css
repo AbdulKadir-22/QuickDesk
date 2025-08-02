@@ -1,0 +1,72 @@
+/* src/Styles/CommentCard.css */
+
+.comment-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.comment-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 14px;
+  color: #0066ff;
+  font-weight: 500;
+}
+
+.comment-content {
+  flex: 2;
+  font-size: 15px;
+  color: #222;
+  margin-left: 20px;
+}
+
+.reply-button {
+  background-color: #4a6cf7;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reply-button:hover {
+  background-color: #3d5ad8;
+}
+
+@media (max-width: 600px) {
+  .comment-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comment-content {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .reply-button {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+}
