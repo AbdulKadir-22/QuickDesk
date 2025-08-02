@@ -4,6 +4,23 @@ import TicketItem from '../Components/TicketItem';
 import '../Styles/Dashboard.css';
 
 export default function Dashboard() {
+  const tickets = [
+    {
+      title: 'Is it a good thing to use AI for Hackathons ?',
+      user: 'someone123',
+      votes: 12,
+      replies: 6,
+      status: 'open',
+    },
+    {
+      title: 'Is it a good thing to use AI for Hackathons ?',
+      user: 'someone123',
+      votes: 10,
+      replies: 9,
+      status: 'open',
+    },
+  ];
+
   return (
     <div className="dashboard">
       <Navbar />
@@ -18,20 +35,16 @@ export default function Dashboard() {
       <h2 className="section-title">Recent Tickets</h2>
 
       <div className="tickets-list">
-        <TicketItem
-          title="Is it a good thing to use AI for Hackathons ?"
-          user="someone123"
-          votes={12}
-          replies={6}
-          status="open"
-        />
-        <TicketItem
-          title="Is it a good thing to use AI for Hackathons ?"
-          user="someone123"
-          votes={10}
-          replies={9}
-          status="open"
-        />
+        {tickets.map((ticket, index) => (
+          <TicketItem
+            key={index}
+            title={ticket.title}
+            user={ticket.user}
+            votes={ticket.votes}
+            replies={ticket.replies}
+            status={ticket.status}
+          />
+        ))}
       </div>
     </div>
   );

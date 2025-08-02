@@ -6,6 +6,7 @@ import HomePage from './Pages/HomePage'; // if you use this later
 import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard';
 import TicketsPage from './Pages/TicketsPage';
+import RaiseTicket from './Pages/RaiseTicket';
 
 const AppRoutes = () => {
   const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
@@ -13,6 +14,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="/raiseticket" element={<RaiseTicket />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/register" element={<Register />} />
       <Route
         path="/dashboard"
