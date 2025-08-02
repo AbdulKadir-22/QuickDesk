@@ -26,18 +26,13 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/all-tickets" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/alltickets" className={({ isActive }) => (isActive ? 'active' : '')}>
             All Tickets
           </NavLink>
         </li>
         <li>
           <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active' : '')}>
             Profile
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/notifications" className={({ isActive }) => (isActive ? 'active' : '')}>
-            Notifications
           </NavLink>
         </li>
       </ul>
