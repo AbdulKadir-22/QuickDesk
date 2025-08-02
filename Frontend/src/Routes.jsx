@@ -24,7 +24,7 @@ const AppRoutes = () => {
       />
       <Route path="/ticketsPage" element={<TicketsPage/>}/>
       <Route path="/allTickets" element={<AllTickets/>}/>
-      <Route path="/profilePage" element={<ProfilePage/>}/>
+      <Route path="/profile" element={<ProfilePage/>}/>
     </Routes>
   );
 };

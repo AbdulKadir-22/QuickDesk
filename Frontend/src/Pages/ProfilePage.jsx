@@ -1,10 +1,12 @@
 // src/pages/ProfilePage.jsx
 import React from 'react';
+import Navbar from '../Components/Navbar';
 import '../Styles/ProfilePage.css';
 
 const ProfilePage = () => {
   return (
     <div className="profile-page">
+      <Navbar/>
       <div className="profile-container">
         <div className="profile-left">
           <img
