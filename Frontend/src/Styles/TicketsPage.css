@@ -1,0 +1,16 @@
+/* src/Styles/TicketsPage.css */
+.tickets-page {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .tickets-page {
+    padding: 0.5rem;
+  }
+
+  .ticket-card {
+    margin: 0.5rem;
+  }
+}

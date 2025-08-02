@@ -1,29 +1,33 @@
 import React from "react";
-import "./AskQuestionForm.css";
+import "../Styles/AskQuestion.css";
 
 const AskQuestionForm = () => {
   return (
-    <div className="form-container">
-      <h2 className="form-title">
-        Ask Question <span className="info-icon">❓</span>
-      </h2>
+    <div class="form-container">
+    <form>
+      <div class="form-group">
+        <label for="question">Question</label>
+        <input type="text" id="question" name="question" placeholder="Enter your question" />
+      </div>
 
-      <form className="ask-form">
-        <label>Question</label>
-        <input type="text" className="input" placeholder="Type your question..." />
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="5" placeholder="Enter the description"></textarea>
+      </div>
 
-        <label>Description</label>
-        <textarea className="textarea" placeholder="Add more details..."></textarea>
-
-        <label>Category</label>
-        <select className="input">
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="category">
           <option value="technical">Technical</option>
-          <option value="non-technical">Non-Technical</option>
+          <option value="nontechnical">Non-Technical</option>
+          <option value="general">General</option>
         </select>
+      </div>
 
-        <button type="submit" className="post-btn">Post</button>
-      </form>
-    </div>
+      <button type="submit">Post</button>
+    </form>
+  </div>
+
   );
 };
 
