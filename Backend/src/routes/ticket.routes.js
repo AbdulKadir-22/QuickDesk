@@ -9,5 +9,6 @@ router.get('/',middleware.authenticate, ticketController.getAllTickets);
 router.get('/:id',middleware.authenticate, ticketController.getTicketById);
 router.put('/:id',middleware.authenticate, ticketController.updateTicket);
 router.delete('/:id',middleware.authenticate, ticketController.deleteTicket);
+router.get('/assign/:id/:assign_to',middleware.authenticate,ticketController.assignTicket)
 
 module.exports = router;

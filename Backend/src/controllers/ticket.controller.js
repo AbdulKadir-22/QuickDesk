@@ -117,4 +117,42 @@ exports.deleteTicket = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: 'Server error', error: err.message });
   }
+
+
+  
+};
+
+
+exports.assignTicket = async (req, res) => {
+  try {
+    const user = req.user;
+    console.log(user.role)
+    if(user.role == 'support_agent' || 'admin'){
+    const ticket = await Ticket.findById(req.params.id);
+    const assign_to = req.params.assign_to
+
+    if(ticket.assigned_to != null){
+    return res.status(500).json('Ticket already assigned');
+    }
+    
+    const updatedTicket = await Ticket.findById(ticket)
+    updatedTicket.assigned_to = assign_to
+    updatedTicket.save()
+     await userModel.findByIdAndUpdate(user._id, {
+      $push: { assigned_tickets: updatedTicket._id }
+    });
+    if(!updatedTicket){
+     return res.status(404).json({ message: 'Ticket not found' });
+    }
+    return res.status(200).json({ message: 'Ticket Assigned',updatedTicket });
+    }else{
+    return res.status(200).json({ message: 'Users are not authorized to assign Tickets!' });
+    }
+
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error', error: err.message });
+  }
+
+
+  
 };
