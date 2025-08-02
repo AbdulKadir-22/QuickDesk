@@ -14,7 +14,7 @@
 
 .login-left {
   flex: 1;
-  background-color: #f4f7ff;
+  background-color: #ffffff;
   padding: 2rem;
   text-align: center;
   display: flex;
@@ -70,6 +70,11 @@
   color: #222;
 }
 
+.login-head{
+    align-items: center;
+    justify-content: center;
+}
+
 .login-right h2 {
   font-size: 30px;
   font-weight: 600;
@@ -99,6 +104,12 @@ input {
   width: 100%;
   max-width: 350px;
   outline: none;
+}
+
+.input-field img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 input:focus {
@@ -132,4 +143,63 @@ button:hover {
 .register-link .quickdesk-text {
   color: #5272f2;
   font-weight: bold;
+}
+
+/* 🔻 RESPONSIVENESS 🔻 */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  /* 🧭 Image section comes first on mobile */
+  .login-left {
+    order: 1;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-right {
+    order: 2;
+    width: 100%;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+  }
+
+  .logo-heading {
+    justify-content: center;
+  }
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .login-right h2 {
+    font-size: 24px;
+  }
+
+  .sub-heading {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  input,
+  button {
+    width: 100%;
+    max-width: none;
+  }
+
+  .illustration {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+
+  
+
 }

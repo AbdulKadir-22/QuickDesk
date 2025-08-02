@@ -28,11 +28,14 @@ export default function Login() {
           <img src={logo} alt="QuickDesk" className="logo-small" />
           <span className="logo-text">QuickDesk</span>
         </div>
-
+        <div className='login-head'>
         <h2>Login</h2>
         <p className="sub-heading">Log In. Follow Up. Stay Informed.</p>
-
+        </div>
+        
         <form onSubmit={handleSubmit}>
+          <div className="input-field">
+          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
           <input
             type="email"
             name="email"
@@ -41,6 +44,10 @@ export default function Login() {
             onChange={handleChange}
             required
           />
+          </div>
+
+          <div className="input-field">
+          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Confirm Password" />
           <input
             type="password"
             name="password"
@@ -49,6 +56,8 @@ export default function Login() {
             onChange={handleChange}
             required
           />
+          </div>
+
           <button type="submit">Login</button>
         </form>
 

@@ -38,8 +38,8 @@ export default function Register() {
     <div className="container">
       <div className="register-box">
         <img src={logo} alt="QuickDesk Logo" className="logo" /> {/* ✅ Logo Here */}
-        <h1>Create an Account</h1>
-        <p>Please fill in your details to register</p>
+        <h1>Register</h1>
+        <p>Sign Up. Speak Up. Get Help.</p>
 
         {error && <div className="error">{error}</div>}
 
