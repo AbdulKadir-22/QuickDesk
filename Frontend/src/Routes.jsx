@@ -1,12 +1,12 @@
 // src/routes/AppRoutes.js
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Register from '../Pages/Register';
-import HomePage from './Pages/HomePage'; // if you use this later
+import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard';
 import TicketsPage from './Pages/TicketsPage';
 import RaiseTicket from './Pages/RaiseTicket';
+import AllTickets from './Pages/AllTickets';
 
 const AppRoutes = () => {
   const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
@@ -22,6 +22,7 @@ const AppRoutes = () => {
         element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
       />
       <Route path="/ticketsPage" element={<TicketsPage/>}/>
+      <Route path="/allTickets" element={<AllTickets/>}/>
     </Routes>
   );
 };
