@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../Styles/Login.css';
 import loginImage from '../assets/loginimg.png'; // Replace with your image path
 import logo from '../assets/logo.png'; // Replace with your logo path
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,7 +15,14 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login submitted:', formData);
+
+    // Dummy login logic
+    if (formData.email && formData.password) {
+      localStorage.setItem('loggedIn', 'true'); // Store login status
+      navigate('/dashboard'); // Redirect to dashboard
+    } else {
+      alert('Please enter valid credentials');
+    }
   };
 
   return (
@@ -29,33 +37,33 @@ export default function Login() {
           <span className="logo-text">QuickDesk</span>
         </div>
         <div className='login-head'>
-        <h2>Login</h2>
-        <p className="sub-heading">Log In. Follow Up. Stay Informed.</p>
+          <h2>Login</h2>
+          <p className="sub-heading">Log In. Follow Up. Stay Informed.</p>
         </div>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="input-field">
-          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+            <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="input-field">
-          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Confirm Password" />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Password" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <button type="submit">Login</button>
