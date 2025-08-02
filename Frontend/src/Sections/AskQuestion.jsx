@@ -1,33 +1,48 @@
 import React from "react";
 import "../Styles/AskQuestion.css";
+// src/Sections/AskQuestion.js
 
-const AskQuestionForm = () => {
+
+const AskQuestionForm = ({ formData, handleChange, handleSubmit }) => {
   return (
-    <div class="form-container">
-    <form>
-      <div class="form-group">
-        <label for="question">Question</label>
-        <input type="text" id="question" name="question" placeholder="Enter your question" />
+    <form className="ask-form" onSubmit={handleSubmit}>
+      <h2>Raise a New Ticket</h2>
+
+      <div className="form-group">
+        <label>Title</label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Brief title of your issue"
+          value={formData.title}
+          onChange={handleChange}
+          required
+        />
       </div>
 
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" rows="5" placeholder="Enter the description"></textarea>
+      <div className="form-group">
+        <label>Description</label>
+        <textarea
+          name="description"
+          placeholder="Explain the issue in detail"
+          value={formData.description}
+          onChange={handleChange}
+          required
+        />
       </div>
 
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select id="category" name="category">
-          <option value="technical">Technical</option>
-          <option value="nontechnical">Non-Technical</option>
-          <option value="general">General</option>
+      <div className="form-group">
+        <label>Category</label>
+        <select name="category" value={formData.category} onChange={handleChange}>
+          <option value="network">Network</option>
+          <option value="hardware">Hardware</option>
+          <option value="software">Software</option>
+          <option value="other">Other</option>
         </select>
       </div>
 
-      <button type="submit">Post</button>
+      <button type="submit">Submit Ticket</button>
     </form>
-  </div>
-
   );
 };
 

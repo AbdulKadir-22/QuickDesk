@@ -26,7 +26,7 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/alltickets" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/ticketspage" className={({ isActive }) => (isActive ? 'active' : '')}>
             All Tickets
           </NavLink>
         </li>
