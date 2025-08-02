@@ -1,8 +1,11 @@
-// src/Register.js
+// src/components/Register.js
 import React, { useState } from 'react';
-import '../Styles/Register.css'; // use the provided CSS
+import { useNavigate } from 'react-router-dom';
+import '../Styles/Register.css';
+import sidepanel from '../assets/sidepanel.png'
+import logo from '../assets/logo.png'; // ✅ your logo file
 
-const Register = () => {
+export default function Register() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,117 +14,67 @@ const Register = () => {
   });
 
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-
     const { name, email, password, confirmPassword } = formData;
-
     if (!name || !email || !password || !confirmPassword) {
       setError('Please fill in all fields.');
-      return;
-    }
-
-    if (password !== confirmPassword) {
+    } else if (password !== confirmPassword) {
       setError('Passwords do not match.');
-      return;
+    } else {
+      alert('Registration Successful!');
+      navigate('/');
     }
-
-    // Simulate success (replace with real logic)
-    alert('Registration successful!');
-    setFormData({ name: '', email: '', password: '', confirmPassword: '' });
-    setError('');
-    // window.location.href = '/Login'; // optional redirection
   };
 
   return (
     <div className="container">
       <div className="register-box">
-        <h1>Register Account</h1>
-        <p>Enter your information to get started</p>
+        <img src={logo} alt="QuickDesk Logo" className="logo" /> {/* ✅ Logo Here */}
+        <h1>Create an Account</h1>
+        <p>Please fill in your details to register</p>
 
         {error && <div className="error">{error}</div>}
 
         <div className="input-group">
           <div className="input-field">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/456/456212.png"
-              alt="name icon"
-            />
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Name" />
+            <input type="text" name="name" placeholder="Name" onChange={handleChange} />
           </div>
 
           <div className="input-field">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
-              alt="email icon"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="E-Mail"
-              value={formData.email}
-              onChange={handleChange}
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
+            <input type="email" name="email" placeholder="E-Mail" onChange={handleChange} />
           </div>
 
           <div className="input-field">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
-              alt="password icon"
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Password" />
+            <input type="password" name="password" placeholder="Password" onChange={handleChange} />
           </div>
 
           <div className="input-field">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
-              alt="confirm password icon"
-            />
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-            />
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Confirm Password" />
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} />
           </div>
         </div>
 
-        <button className="register-btn" onClick={handleSubmit}>
-          Register
-        </button>
+        <button className="register-btn" onClick={handleRegister}>Register</button>
 
         <div className="signup">
-          Already have an account? <span>Login</span>
+          Already have an account? <span onClick={() => navigate('/')}>Login</span>
         </div>
       </div>
 
       <div className="image-box">
-        <img
-          src="C:\Users\faiza\OneDrive\Desktop\QuickDesk\Frontend\src\assets\side_panel_registeration.png"
-          alt="QuickDesk Illustration"
-        />
+        <img src={sidepanel} alt="Register Visual" />
       </div>
     </div>
   );
-};
-
-export default Register;
+}
