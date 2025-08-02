@@ -1,4 +1,5 @@
 const Ticket = require('../models/ticket.model');
+const userModel = require('../models/user.model');
 
 // POST /api/tickets
 exports.createTicket = async (req, res) => {
@@ -8,18 +9,21 @@ exports.createTicket = async (req, res) => {
       description,
       category,
       attachments,
-      created_by
     } = req.body;
+    user = req.user
 
     const ticket = new Ticket({
       title,
       description,
       category,
       attachments,
-      created_by
+      created_by:user
     });
 
     await ticket.save();
+    await userModel.findByIdAndUpdate(user._id, {
+      $push: { tickets: ticket._id }
+    });
     return res.status(201).json(ticket);
 
   } catch (err) {
@@ -73,15 +77,21 @@ exports.getTicketById = async (req, res) => {
 exports.updateTicket = async (req, res) => {
   try {
     const updates = req.body;
+    const user = req.user;
+
+    const ticket = await Ticket.findById(req.params.id)
+    if(!ticket){
+      return res.status(404).json({ message: 'Ticket not found' });
+    }
+    if(ticket.created_by.equals(user._id)){
     const updatedTicket = await Ticket.findByIdAndUpdate(req.params.id, updates, {
       new: true,
       runValidators: true
     });
-
-    if (!updatedTicket) return res.status(404).json({ message: 'Ticket not found' });
-
     return res.status(200).json(updatedTicket);
-
+  }else{
+    return res.status(404).json({ message: 'You are not Authorized to update this Ticket !' });
+  }
   } catch (err) {
     return res.status(500).json({ message: 'Server error', error: err.message });
   }
@@ -90,8 +100,17 @@ exports.updateTicket = async (req, res) => {
 // DELETE /api/tickets/:id
 exports.deleteTicket = async (req, res) => {
   try {
-    const deleted = await Ticket.findByIdAndDelete(req.params.id);
-    if (!deleted) return res.status(404).json({ message: 'Ticket not found' });
+    const user = req.user;
+    const ticket = await Ticket.findById(req.params.id);
+    if(!ticket){
+     return res.status(404).json({ message: 'Ticket not found' });
+    }
+    if(ticket.created_by.equals(user._id)|| user.role=="admin"){
+      const deleted = await Ticket.findByIdAndDelete(req.params.id);
+      if (!deleted) return res.status(404).json({ message: 'Ticket not found' });
+    }else{
+    return res.status(500).json({ message: 'You are not Authorized to delete this Ticket !' });
+    }
 
     return res.status(200).json({ message: 'Ticket deleted successfully' });
 
