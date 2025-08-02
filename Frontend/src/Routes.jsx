@@ -5,18 +5,20 @@ import Register from './Pages/Register';
 import HomePage from './Pages/HomePage'; // if you use this later
 import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard';
+import TicketsPage from './Pages/TicketsPage';
 
 const AppRoutes = () => {
   const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 
   return (
     <Routes>
-      <Route path="/" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
         path="/dashboard"
         element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
       />
+      <Route path="/ticketsPage" element={<TicketsPage/>}/>
     </Routes>
   );
 };
