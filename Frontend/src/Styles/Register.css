@@ -7,18 +7,22 @@
   background-color: #ffffff;
   align-items: center;
   padding: 16px;
+
+
 }
 
 .image-box {
+  display:none;
   width: 100%;
   padding: 16px 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: right;
+  align-items: right;
 }
 
 .image-box img {
-  width: 90%;
+  display:none;
+  width: 75%;
   max-width: 280px;
   height: auto;
   object-fit: contain;
@@ -132,20 +136,27 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+      margin-left: 8cap;
+  margin-right: 20%;
   }
 
   .image-box,
   .register-box {
     flex: 1;
-    height: 100vh;
+    /* height: 100vh; */
   }
 
   .image-box {
     padding: 20px;
+    display:flex;
   }
 
   .image-box img {
     max-width: 80%;
+    display:flex;
+
+    /* display: none; */
+
   }
 
   .register-box {
