@@ -1,10 +1,10 @@
 // src/routes/AppRoutes.js
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Register from '../Pages/Register';
-import HomePage from '../Pages/HomePage'; // if you use this later
-import Login from '../Pages/Login';
-import Dashboard from '../Pages/Dashboard';
+import Register from './Pages/Register';
+import HomePage from './Pages/HomePage'; // if you use this later
+import Login from './Pages/Login';
+import Dashboard from './Pages/Dashboard';
 
 const AppRoutes = () => {
   const isLoggedIn = localStorage.getItem('loggedIn') === 'true';

@@ -1,8 +1,11 @@
+
+
 .login-container {
   display: flex;
   height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;
+  margin:0px;
 }
 
 .login-container .login-left img {
@@ -148,35 +151,40 @@ button:hover {
 /* 🔻 RESPONSIVENESS 🔻 */
 @media (max-width: 768px) {
   .login-container {
-    flex-direction: column;
+    /* flex-direction: column; */
+    display:block;
+    width:100vw;
+    margin-top:10vh;
   }
 
   /* 🧭 Image section comes first on mobile */
   .login-left {
     order: 1;
     width: 100%;
-    padding: 2rem;
+    padding: 1 rem;
     border-radius: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: none;
   }
 
   .login-right {
     order: 2;
     width: 100%;
-    padding: 2rem;
+    margin:0px;
+    padding: 0rem;
     align-items: center;
     justify-content: center;
     border-radius: 0;
   }
 
   .logo-heading {
-    justify-content: center;
+    justify-content: left;
   }
 
   .logo-text {
-    font-size: 16px;
+    font-size: 32px;
   }
 
   .login-right h2 {
@@ -192,6 +200,7 @@ button:hover {
   button {
     width: 100%;
     max-width: none;
+    margin: left 20px;
   }
 
   .illustration {
@@ -199,6 +208,12 @@ button:hover {
     max-width: 300px;
     margin-bottom: 1.5rem;
   }
+
+  form {
+  display: flex;
+  flex-direction: column;
+  gap: 2 px;
+}
 
   
 
